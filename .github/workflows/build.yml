@@ -28,16 +28,16 @@ jobs:
         uses: android-actions/setup-android@v2
 
       - name: Install Cordova
-        run: npm install -g cordova
+        run: npm install -g cordova@12
 
       - name: Install dependencies
         run: npm install
 
       - name: Add Android platform
-        run: cordova platform add android
+        run: cordova platform add android@12
 
       - name: Build APK (Debug)
-        run: cordova build android --debug
+        run: cordova build android --debug -- --gradleArg="-Dorg.gradle.java.home=$JAVA_HOME"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
